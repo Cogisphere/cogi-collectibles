@@ -1,0 +1,29 @@
+{
+  "name": "cogi-collectibles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cogisphere/cogi-collectibles.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cogisphere/cogi-collectibles/issues"
+  },
+  "homepage": "https://github.com/Cogisphere/cogi-collectibles#readme",
+  "dependencies": {
+    "@types/uuid": "^8.3.4",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "jest": "^27.4.7",
+    "ts-jest": "^27.1.2",
+    "typescript": "^4.5.4"
+  }
+}

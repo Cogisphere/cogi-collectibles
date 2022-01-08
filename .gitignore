@@ -1,0 +1,5 @@
+# the node modules
+node_modules
+
+# the directory with output JS. Check tsconfig.json for more info.
+build

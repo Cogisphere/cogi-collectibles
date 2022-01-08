@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "declaration": true,
+      "strict": true,
+      "allowJs": false,
+      "lib": ["es6", "es2017", "dom"],
+      "outDir": "./build"
+    },
+    "include": ["./cogi-collectibles.ts",  "./lib/**/*" ], 
+    "exclude": [ "./build", "node_modules", "**/__tests__/*" ]
+  }
+  
