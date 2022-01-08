@@ -3,6 +3,7 @@
  *  Different states that a model can be in.
  */
 export enum ModelState {
+    Unknown = 'unknown',
     Packaged = 'packaged',
     Assembled = 'assembled',
     Primed = 'primed',
