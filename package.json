@@ -2,7 +2,8 @@
   "name": "cogi-collectibles",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/cogi-collectibles.js",
+  "types": "build/cogi-collectibles.d.ts",
   "scripts": {
     "test": "jest",
     "build": "tsc",
