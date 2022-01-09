@@ -1,4 +1,5 @@
 import buildModels from '../../lib/Actions/buildModels';
+import buildBox from '../../lib/Actions/buildBox';
 import Model from '../../lib/Structures/Model';
 
 describe('buildModels', () => {
@@ -30,7 +31,7 @@ describe('buildModels', () => {
         expect(ids.size).toEqual(5);
     });
 
-    test('it shoudl create models bases on collection of partial data', () => {
+    test('it should create models bases on collection of partial data', () => {
 
         const stubs = [
             { name: 'model-a' },
@@ -45,5 +46,20 @@ describe('buildModels', () => {
         expect(models.findIndex((value:Model) => value.name === stubs[0].name)).toBeGreaterThan(-1);
         expect(models.findIndex((value:Model) => value.name === stubs[1].name)).toBeGreaterThan(-1);
         expect(models.findIndex((value:Model) => value.name === stubs[2].name)).toBeGreaterThan(-1);
+    });
+
+    test('it should create models based on box', () => {
+
+        const box = buildBox({
+            models: [
+                { possibilities: [ { name: 'test-1' }, { name: 'test-2' } ] }
+            ]
+        });
+
+        const models = buildModels(box);
+
+        expect(models.length).toEqual(1);
+
+        expect(models.findIndex((value:Model) => value.name === 'test-1')).toBeGreaterThan(-1);
     });
 });

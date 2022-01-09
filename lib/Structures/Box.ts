@@ -1,6 +1,7 @@
 import PossibleModel from "./PossibleModel";
 
 export enum BoxAvailability {
+    Unknown = 'unknown',
     Available = 'available',
     OutOfProduction = 'out-of-production'
 };
