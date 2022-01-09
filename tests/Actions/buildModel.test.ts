@@ -18,4 +18,19 @@ describe('buildModel', () => {
         expect(model).toHaveProperty('state');
         expect(model.state).toEqual(ModelState.Unknown);
     });
+
+    test('it should initialize the model with information from the stub', () => {
+
+        const stub = {
+            name: 'test',
+            state: ModelState.Done,
+            id: 'test-id'
+        };
+
+        const model = buildModel(stub);
+
+        expect(model.name).toEqual(stub.name);
+        expect(model.id).toEqual(stub.id);
+        expect(model.state).toEqual(stub.state);
+    });
 });

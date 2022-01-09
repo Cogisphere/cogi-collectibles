@@ -29,4 +29,21 @@ describe('buildModels', () => {
 
         expect(ids.size).toEqual(5);
     });
+
+    test('it shoudl create models bases on collection of partial data', () => {
+
+        const stubs = [
+            { name: 'model-a' },
+            { name: 'model-b' },
+            { name: 'model-c '}
+        ];
+
+        const models = buildModels(stubs);
+
+        expect(models.length).toEqual(stubs.length);
+
+        expect(models.findIndex((value:Model) => value.name === stubs[0].name)).toBeGreaterThan(-1);
+        expect(models.findIndex((value:Model) => value.name === stubs[1].name)).toBeGreaterThan(-1);
+        expect(models.findIndex((value:Model) => value.name === stubs[2].name)).toBeGreaterThan(-1);
+    });
 });

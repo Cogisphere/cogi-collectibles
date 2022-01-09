@@ -1,16 +1,25 @@
 import Model, { ModelState } from "../Structures/Model";
-import { v4 as uuid } from 'uuid'; 
+import { v4 as uuid } from 'uuid';
 
 /**
  *  Create an empty model. This function creates an empty model object
  *  with generated id and unknown status.
  */
-export default function buildModel(name:string = '') : Model {
+function buildModel(stub:Partial<Model>) : Model;
+function buildModel(name:string) : Model;
+function buildModel() : Model;
+function buildModel(input:any = '') : Model {
 
-    return {
+    const stub =  {
         id: uuid(),
-        name: name,
+        name: typeof(input) === 'string' ? input : '',
         notes: '',
         state: ModelState.Unknown
     };
+
+    if (typeof(input) === 'object') return Object.assign(stub, input);
+
+    return stub;
 };
+
+export default buildModel;
