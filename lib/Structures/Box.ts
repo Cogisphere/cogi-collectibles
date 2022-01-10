@@ -35,4 +35,9 @@ export default interface Box {
      *  The models inside the box.
      */
     models:Array<PossibleModel>;
+
+    /**
+     *  An array of tags associated with the box.
+     */
+    tags:Array<string>;
 };

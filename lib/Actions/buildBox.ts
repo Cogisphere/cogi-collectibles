@@ -11,6 +11,7 @@ export default function buildBox(stub:Partial<Box>) : Box {
         name: '',
         availability: BoxAvailability.Unknown,
         notes: '',
-        models: []
+        models: [],
+        tags: []
     }, stub);
 };
