@@ -1,7 +1,12 @@
 import buildModel from '../../lib/Actions/buildModel';
+import Box from '../../lib/Structures/Box';
 import { ModelState } from '../../lib/Structures/Model';
 
 describe('buildModel', () => {
+
+    const contextBox:Partial<Box> = {
+        tags: [ "C1" ]
+    };
 
     test('it should build a model with ID', () => {
 
@@ -57,7 +62,22 @@ describe('buildModel', () => {
         const model = buildModel(stub);
 
         expect(model.tags.length).toEqual(2);
-        expect(model.tags.includes('t1')).toBeTruthy();
-        expect(model.tags.includes('t2')).toBeTruthy();
+        expect(model.tags).toContain('T1');
+        expect(model.tags).toContain('T2');
+    });
+
+    test('it should copy the tags from the context', () => {
+
+        const stub = {
+            name: 'test',
+            state: ModelState.Done,
+            tags:  [ 't1' ]
+        };
+
+        const model = buildModel(stub, contextBox);
+
+        expect(model.tags.length).toEqual(2);
+        expect(model.tags).toContain('T1');
+        expect(model.tags).toContain('C1');
     });
 });

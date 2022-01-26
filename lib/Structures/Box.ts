@@ -37,7 +37,9 @@ export default interface Box {
     models:Array<PossibleModel>;
 
     /**
-     *  An array of tags associated with the box.
+     *  An array of tags associated with the models inside the box. These are supposed to
+     *  be applied to the partial definitions of the models (the list of box tags should
+     *  be merged with possibility list of tags).
      */
     tags:Array<string>;
 };

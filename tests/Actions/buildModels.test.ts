@@ -1,6 +1,7 @@
 import buildModels from '../../lib/Actions/buildModels';
 import buildBox from '../../lib/Actions/buildBox';
 import Model from '../../lib/Structures/Model';
+import { ModelContext } from '../../lib/Actions/buildModel';
 
 describe('buildModels', () => {
 
@@ -48,6 +49,26 @@ describe('buildModels', () => {
         expect(models.findIndex((value:Model) => value.name === stubs[2].name)).toBeGreaterThan(-1);
     });
 
+    test('it should create models bases on collection of partial data and apply context data', () => {
+
+        const stubs:Partial<Model>[] = [
+            { name: 'model-a', tags: [ "M1" ] },
+            { name: 'model-b' }
+        ];
+
+        const context:ModelContext = {
+            tags: [ "C1" ]
+        };
+
+        const models = buildModels(stubs, context);
+
+        expect(models.length).toEqual(stubs.length);
+
+        expect(models[0].tags).toContain('M1');
+        expect(models[0].tags).toContain('C1');
+        expect(models[1].tags).toContain('C1');
+    });
+
     test('it should create models based on box', () => {
 
         const box = buildBox({
@@ -61,5 +82,22 @@ describe('buildModels', () => {
         expect(models.length).toEqual(1);
 
         expect(models.findIndex((value:Model) => value.name === 'test-1')).toBeGreaterThan(-1);
+    });
+
+    test('it should pass tags from the box to the model', () => {
+
+        const box = buildBox({
+            tags: [ "B1" ],
+            models: [
+                { possibilities: [ { name: 'test-1', tags: [ "M1" ] } ] }
+            ]
+        });
+
+        const models = buildModels(box);
+
+        expect(models.length).toEqual(1);
+
+        expect(models[0].tags).toContain('B1');
+        expect(models[0].tags).toContain('M1');
     });
 });
