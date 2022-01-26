@@ -1,4 +1,4 @@
-import { matchTags } from "../../lib/Actions/matchTags";
+import matchTags from "../../lib/Actions/matchTags";
 
 describe('matchTags()', () => {
 

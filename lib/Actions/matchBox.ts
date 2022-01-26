@@ -1,5 +1,5 @@
 import Box from "../Structures/Box";
-import { matchTags } from "./matchTags";
+import matchTags from "./matchTags";
 
 /**
  *  A function to check if a box matches a specific keyword. This function
