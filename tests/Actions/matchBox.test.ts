@@ -25,9 +25,23 @@ describe('matchBox()', () => {
         expect(result).toEqual(true);
     });
 
+    test('it should match a substring in a name (mixed case)', () => {
+
+        const result = matchBox("TEs", suspect);
+
+        expect(result).toEqual(true);
+    });
+
     test('it should match a substring in a model name', () => {
 
         const result = matchBox("sus", suspect);
+
+        expect(result).toEqual(true);
+    });
+
+    test('it should match a substring in a model name (mixed case)', () => {
+
+        const result = matchBox("SUs", suspect);
 
         expect(result).toEqual(true);
     });

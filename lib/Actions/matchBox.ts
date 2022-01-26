@@ -8,7 +8,9 @@ import matchTags from "./matchTags";
  */
 export default function matchBox(keyword:string, box:Partial<Box>) : boolean {
 
-    if (box.name && box.name.includes(keyword)) return true;
+    const normalizedKeyword = keyword.toUpperCase();
+
+    if (box.name && box.name.toUpperCase().includes(normalizedKeyword)) return true;
 
     if (box.tags && matchTags(keyword, box.tags)) return true;
 
@@ -16,7 +18,7 @@ export default function matchBox(keyword:string, box:Partial<Box>) : boolean {
         for (let models of box.models) {
             for (let model of  models.possibilities) {
 
-                if (model.name?.includes(keyword)) return true;
+                if (model.name?.toUpperCase().includes(normalizedKeyword)) return true;
 
                 if (model.tags && matchTags(keyword, model.tags)) return true;
             }
