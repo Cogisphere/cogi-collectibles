@@ -1,6 +1,6 @@
 {
   "name": "cogi-collectibles",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "",
   "main": "build/cogi-collectibles.js",
   "types": "build/cogi-collectibles.d.ts",

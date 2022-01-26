@@ -52,15 +52,20 @@ function buildModels(first:any, second:any = '', context:ModelContext|undefined 
 
     // @note we use here some knowledge about how the ModelContext looks like. This is
     // not super great practice, so we need to have tests that will cover for this.
-    const deducedContext = (typeof(second) === 'object' && second.tags )? second : context;
+    const deducedContext = (typeof(second) === 'object' && second.tags && typeof(first) !== 'number') ? second : context;
 
+    // the first params is a Box instance.
     if (typeof (first) === 'object' && 'models' in first) {
 
+        // the box is an context for us, so we override the recognized deduced context
+        const deducedContext = first;
+        
         const resolver = typeof(second) === 'function' ? second : (possible:PossibleModel) => { return possible.possibilities[0]; }
      
         return buildModels(first.models, resolver, deducedContext); 
     }
 
+    // the first param is an iterable
     if (typeof(first[Symbol.iterator]) === 'function') {
 
         return [...first].map((input:Partial<Model>|PossibleModel) => {
