@@ -33,4 +33,31 @@ describe('buildModel', () => {
         expect(model.id).toEqual(stub.id);
         expect(model.state).toEqual(stub.state);
     });
+
+    test('it should create tagas array', () => {
+
+        const stub = {
+            name: 'test',
+            state: ModelState.Done
+        };
+
+        const model = buildModel(stub);
+
+        expect(model.tags).toBeInstanceOf(Array);
+    });
+
+    test('it should fill in the tags array when some passed', () => {
+
+        const stub = {
+            name: 'test',
+            state: ModelState.Done,
+            tags:  [ 't1', 't2' ]
+        };
+
+        const model = buildModel(stub);
+
+        expect(model.tags.length).toEqual(2);
+        expect(model.tags.includes('t1')).toBeTruthy();
+        expect(model.tags.includes('t2')).toBeTruthy();
+    });
 });

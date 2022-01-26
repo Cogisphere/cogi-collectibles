@@ -1,5 +1,6 @@
 import Model, { ModelState } from "../Structures/Model";
 import { v4 as uuid } from 'uuid';
+import normalizeTags from "./normalizeTags";
 
 /**
  *  Create an empty model. This function creates an empty model object
@@ -14,7 +15,8 @@ function buildModel(input:any = '') : Model {
         id: uuid(),
         name: typeof(input) === 'string' ? input : '',
         notes: '',
-        state: ModelState.Unknown
+        state: ModelState.Unknown,
+        tags: typeof(input) === 'object' && input.tags ? normalizeTags(input.tags) : []
     };
 
     if (typeof(input) === 'object') return Object.assign(stub, input);

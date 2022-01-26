@@ -36,4 +36,9 @@ export default interface Model {
      *  Notes about the model. This can be MD format.
      */
     notes:string;
+
+    /**
+     *  Tags associated with the model.
+     */
+    tags:string[];
 };
